@@ -5,7 +5,11 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'picsum.photos',
+        hostname: 'ae-pic-a1.aliexpress-media.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ae01.alicdn.com',
       },
     ],
   },
