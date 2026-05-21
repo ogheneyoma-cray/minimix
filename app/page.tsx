@@ -19,7 +19,7 @@ export default function HomePage() {
       <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-stone-950">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://picsum.photos/seed/herominimix/1600/900"
+            src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&q=80"
             alt="MINI-MINIX fashion hero"
             fill
             className="object-cover opacity-30"
@@ -80,18 +80,18 @@ export default function HomePage() {
           <h2 className="section-heading text-center mb-10">Shop by Category</h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
-              { label: 'Dresses', seed: 'catdress', color: 'from-rose-100' },
-              { label: 'Tops', seed: 'cattops', color: 'from-sky-100' },
-              { label: 'Bottoms', seed: 'catbottom', color: 'from-amber-100' },
-              { label: 'Outerwear', seed: 'catouter', color: 'from-emerald-100' },
-            ].map(({ label, seed, color }) => (
+              { label: 'Dresses', img: 'https://images.unsplash.com/photo-1572804013427-4d7ca7268217?w=600&q=80', color: 'from-rose-100' },
+              { label: 'Tops', img: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80', color: 'from-sky-100' },
+              { label: 'Bottoms', img: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&q=80', color: 'from-amber-100' },
+              { label: 'Outerwear', img: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=600&q=80', color: 'from-emerald-100' },
+            ].map(({ label, img, color }) => (
               <Link
                 key={label}
                 href={`/shop?category=${label}`}
                 className={`group relative rounded-2xl overflow-hidden aspect-square bg-gradient-to-b ${color} to-stone-100`}
               >
                 <Image
-                  src={`https://picsum.photos/seed/${seed}/400/400`}
+                  src={img}
                   alt={label}
                   fill
                   className="object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
@@ -155,7 +155,7 @@ export default function HomePage() {
             </div>
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden">
               <Image
-                src="https://picsum.photos/seed/aboutminimix/600/750"
+                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
                 alt="MINI-MINIX brand story"
                 fill
                 className="object-cover"

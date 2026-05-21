@@ -35,7 +35,7 @@ export default function AboutPage() {
         </div>
         <div className="relative aspect-[4/5] rounded-3xl overflow-hidden">
           <Image
-            src="https://picsum.photos/seed/about1/600/750"
+            src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&q=80"
             alt="MINI-MINIX store"
             fill
             className="object-cover"
@@ -113,7 +113,7 @@ export default function AboutPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
         <div className="relative aspect-[4/3] rounded-3xl overflow-hidden">
           <Image
-            src="https://picsum.photos/seed/about2/600/450"
+            src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600&q=80"
             alt="MINI-MINIX team"
             fill
             className="object-cover"
