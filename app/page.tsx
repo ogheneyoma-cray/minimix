@@ -155,7 +155,7 @@ export default function HomePage() {
             </div>
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
+                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&q=80"
                 alt="MINI-MINIX brand story"
                 fill
                 className="object-cover"

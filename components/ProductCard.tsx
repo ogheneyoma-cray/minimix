@@ -5,15 +5,13 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Product } from '@/types';
 import { useCart } from '@/context/CartContext';
-import { formatPrice, CurrencyToggle } from '@/components/CurrencyDisplay';
-import { Currency } from '@/types';
+import { PriceTag } from '@/components/CurrencyDisplay';
 
 interface Props {
   product: Product;
-  currency?: Currency;
 }
 
-export default function ProductCard({ product, currency = 'USD' }: Props) {
+export default function ProductCard({ product }: Props) {
   const { addToCart } = useCart();
   const [added, setAdded] = useState(false);
 
@@ -52,9 +50,7 @@ export default function ProductCard({ product, currency = 'USD' }: Props) {
               {product.name}
             </h3>
           </Link>
-          <p className="mt-1 text-sm font-bold text-accent-600">
-            {formatPrice(product.price, currency)}
-          </p>
+          <PriceTag usd={product.price} className="mt-1 text-sm font-bold text-accent-600 block" />
         </div>
 
         <button
@@ -75,23 +71,12 @@ export default function ProductCard({ product, currency = 'USD' }: Props) {
   );
 }
 
-interface ShopGridProps {
-  products: Product[];
-}
-
-export function ShopGrid({ products }: ShopGridProps) {
-  const [currency, setCurrency] = useState<Currency>('USD');
-
+export function ShopGrid({ products }: { products: Product[] }) {
   return (
-    <div>
-      <div className="flex justify-end mb-6">
-        <CurrencyToggle value={currency} onChange={setCurrency} />
-      </div>
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-        {products.map((p) => (
-          <ProductCard key={p.id} product={p} currency={currency} />
-        ))}
-      </div>
+    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+      {products.map((p) => (
+        <ProductCard key={p.id} product={p} />
+      ))}
     </div>
   );
 }

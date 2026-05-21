@@ -2,15 +2,13 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
 import { useCart } from '@/context/CartContext';
-import { formatPrice, CurrencyToggle } from '@/components/CurrencyDisplay';
-import { Currency } from '@/types';
-import type { Metadata } from 'next';
+import { formatPrice } from '@/components/CurrencyDisplay';
+import { useCurrency } from '@/context/CurrencyContext';
 
 export default function CartPage() {
   const { items, removeFromCart, updateQuantity, cartTotal, cartCount } = useCart();
-  const [currency, setCurrency] = useState<Currency>('USD');
+  const { currency } = useCurrency();
 
   if (items.length === 0) {
     return (
@@ -32,14 +30,11 @@ export default function CartPage() {
 
   return (
     <div className="page-container">
-      <div className="flex items-center justify-between mb-10">
-        <div>
-          <h1 className="section-heading">Your Cart</h1>
-          <p className="text-stone-500 text-sm mt-1">
-            {cartCount} {cartCount === 1 ? 'item' : 'items'}
-          </p>
-        </div>
-        <CurrencyToggle value={currency} onChange={setCurrency} />
+      <div className="mb-10">
+        <h1 className="section-heading">Your Cart</h1>
+        <p className="text-stone-500 text-sm mt-1">
+          {cartCount} {cartCount === 1 ? 'item' : 'items'}
+        </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">

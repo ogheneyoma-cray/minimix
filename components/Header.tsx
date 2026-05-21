@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { useCart } from '@/context/CartContext';
+import { CurrencyToggle } from '@/components/CurrencyDisplay';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -48,6 +49,7 @@ export default function Header() {
 
           {/* Right side */}
           <div className="flex items-center gap-3">
+            <CurrencyToggle className="hidden sm:flex" />
             <Link
               href="/cart"
               className="relative flex items-center justify-center w-11 h-11 rounded-full hover:bg-stone-50 transition-colors"
@@ -98,6 +100,10 @@ export default function Header() {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden border-t border-stone-100 bg-white px-4 py-4 space-y-1">
+          <div className="px-4 py-2">
+            <p className="text-xs text-stone-400 font-medium mb-2 uppercase tracking-widest">Currency</p>
+            <CurrencyToggle />
+          </div>
           {navLinks.map(({ href, label }) => (
             <Link
               key={href}

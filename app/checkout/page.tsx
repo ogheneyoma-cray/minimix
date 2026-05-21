@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
 import { formatPrice } from '@/components/CurrencyDisplay';
-import { Currency } from '@/types';
+import { useCurrency } from '@/context/CurrencyContext';
 
 interface FormData {
   firstName: string;
@@ -35,8 +35,8 @@ const EMPTY_FORM: FormData = {
 export default function CheckoutPage() {
   const router = useRouter();
   const { items, cartTotal, cartCount, clearCart } = useCart();
+  const { currency } = useCurrency();
   const [form, setForm] = useState<FormData>(EMPTY_FORM);
-  const [currency] = useState<Currency>('NGN');
   const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState<Partial<FormData>>({});
 

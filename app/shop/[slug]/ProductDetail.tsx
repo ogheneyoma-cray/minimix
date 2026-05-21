@@ -6,8 +6,8 @@ import { useState } from 'react';
 import { Product } from '@/types';
 import { products } from '@/data/products';
 import { useCart } from '@/context/CartContext';
-import { formatPrice, CurrencyToggle } from '@/components/CurrencyDisplay';
-import { Currency } from '@/types';
+import { PriceTag, formatPrice } from '@/components/CurrencyDisplay';
+import { useCurrency } from '@/context/CurrencyContext';
 
 interface Props {
   product: Product;
@@ -15,8 +15,8 @@ interface Props {
 
 export default function ProductDetail({ product }: Props) {
   const { addToCart } = useCart();
+  const { currency } = useCurrency();
   const [quantity, setQuantity] = useState(1);
-  const [currency, setCurrency] = useState<Currency>('USD');
   const [added, setAdded] = useState(false);
 
   const relatedProducts = products
@@ -72,12 +72,7 @@ export default function ProductDetail({ product }: Props) {
             <h1 className="text-2xl sm:text-3xl font-bold text-stone-900 leading-tight mb-4">
               {product.name}
             </h1>
-            <div className="flex items-center gap-3">
-              <span className="text-2xl font-bold text-accent-600">
-                {formatPrice(product.price, currency)}
-              </span>
-              <CurrencyToggle value={currency} onChange={setCurrency} />
-            </div>
+            <PriceTag usd={product.price} className="text-2xl font-bold text-accent-600" />
           </div>
 
           <div>
@@ -192,9 +187,7 @@ export default function ProductDetail({ product }: Props) {
                 </div>
                 <div className="p-3">
                   <p className="text-sm font-semibold text-stone-900 line-clamp-1">{rp.name}</p>
-                  <p className="text-sm font-bold text-accent-600 mt-0.5">
-                    {formatPrice(rp.price, currency)}
-                  </p>
+                  <PriceTag usd={rp.price} className="text-sm font-bold text-accent-600 mt-0.5 block" />
                 </div>
               </Link>
             ))}
